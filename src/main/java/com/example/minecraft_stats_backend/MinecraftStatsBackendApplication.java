@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MinecraftStatsBackendApplication {
 
 	public static void main(String[] args) {
+		StatsParser.parseStats();
+		MojangAPI.getNames();
 		SpringApplication.run(MinecraftStatsBackendApplication.class, args);
 	}
 
