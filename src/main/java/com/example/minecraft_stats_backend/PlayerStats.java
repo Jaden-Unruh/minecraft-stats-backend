@@ -18,4 +18,4 @@ public class PlayerStats {
 	public void setStats(Map<String, Map<String, Integer>> stats) {
 		this.stats=stats;
 	}
-}
+} 

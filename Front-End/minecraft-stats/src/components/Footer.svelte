@@ -8,5 +8,5 @@
 </style>
 
 <footer>
-	&copy; 2024 Jaden Unruh, J³L+ SMP | All Rights Reserved
+	2024 Jaden Unruh, J³L+ SMP
 </footer>

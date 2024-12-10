@@ -31,15 +31,23 @@
 		font-weight: bold;
 		font-size: 1.2rem;
 	}
+	
+	.logo img {
+		width: 35px;
+		height: 35px;
+		border-radius: 6px;
+		display: inline;
+		vertical-align: middle;
+	}
 </style>
 
 <nav>
-	<div class="logo">J3L+ SMP S2</div>
+	<div class="logo"><img src="/assets/logo.png" alt="J3L+ Logo"> J3L+ SMP S2</div>
 	<div class="menu">
-		<a on:click={() => (currentRoute = "home")}>Home</a>
-		<a on:click={() => (currentRoute = "players")}>Players</a>
-		<a on:click={() => (currentRoute = "backups")}>Backups</a>
-		<a on:click={() => (currentRoute = "world-map")}>World Map</a>
+		<a href="/">Home</a>
+		<a href="/players">Players</a>
+		<a href="/backups">Backups</a>
+		<a href="/world-map">World Map</a>
 		<a href="https://github.com/Jaden-Unruh/minecraft-stats-backend" target="_blank">GitHub</a>
 	</div>
 </nav>

@@ -9,6 +9,7 @@ public class MinecraftStatsBackendApplication {
 	public static void main(String[] args) {
 		StatsParser.parseStats();
 		MojangAPI.getNames();
+		BackupsParser.parseBackups();
 		SpringApplication.run(MinecraftStatsBackendApplication.class, args);
 	}
 

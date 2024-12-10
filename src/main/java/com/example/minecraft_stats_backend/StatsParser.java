@@ -23,7 +23,7 @@ public class StatsParser {
 					try {
 						PlayerStats stats = objectMapper.readValue(file, PlayerStats.class);
 						
-						String playerUUID = file.getName().replace(".json", "");
+						String playerUUID = file.getName().replace(".json", "").replaceAll("-", "");
 						allPlayerStats.put(playerUUID, stats);
 					} catch (IOException e) {
 						System.err.println("Error reading file: " + file.getName());

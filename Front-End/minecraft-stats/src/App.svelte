@@ -1,10 +1,29 @@
 <script>
 	import Navbar from './components/Navbar.svelte';
 	import Footer from './components/Footer.svelte';
-	import Home from './components/Home.svelte';
-	import PlayerList from './components/PlayerList.svelte';
+	import Home from './routes/Home.svelte';
+	import PlayerList from './routes/PlayerList.svelte';
+	import Backups from './routes/Backups.svelte';
+	import Map from './routes/Map.svelte';
+	import Stats from './routes/Stats.svelte';
 	
 	let currentRoute = "home";
+	let playerName = null;
+	
+	const path = window.location.pathname;
+	
+	if (path === "/") {
+		currentRoute = "home";
+	} else if (path === "/players") {
+		currentRoute = "players";
+	} else if (path === "/backups") {
+		currentRoute = "backups";
+	} else if (path === "/world-map") {
+		currentRoute = "world-map";
+	} else if (path.startsWith("/stats/")) {
+		currentRoute = "stats";
+		playerName = path.split("/stats/")[1];
+	}
 </script>
 
 <style>
@@ -26,6 +45,12 @@
 			<Home />
 		{:else if currentRoute === "players"}
 			<PlayerList />
+		{:else if currentRoute === "backups"}
+			<Backups />
+		{:else if currentRoute === "world-map"}
+			<Map />
+		{:else if currentRoute === "stats"}
+			<Stats {playerName} />
 		{/if}
 	</div>
 	<Footer />

@@ -10,6 +10,7 @@ import java.util.Map;
 public class MojangAPI {
 	
 	static Map<String, String> nameCache = new HashMap<>();
+	static Map<String, String> uuidCache = new HashMap<>();
 	
 	public static void getNames() {
 		StatsParser.allPlayerStats.forEach((uuid, stats) -> {
@@ -45,13 +46,13 @@ public class MojangAPI {
 			reader.close();
 			
 			String jsonResponse = response.toString();
-			System.out.println(jsonResponse);
 			int nameStart = jsonResponse.indexOf("\"name\" : \"") + 10;
 			int nameEnd = jsonResponse.indexOf("\"", nameStart);
 			
 			String name = jsonResponse.substring(nameStart, nameEnd);
 			
 			nameCache.put(uuid, name);
+			uuidCache.put(name, uuid);
 			
 			return name;
 		} catch(Exception e) {
