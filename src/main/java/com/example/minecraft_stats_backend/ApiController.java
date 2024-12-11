@@ -23,6 +23,8 @@ public class ApiController {
 	
 	@GetMapping("/stats/{playerName}")
 	public Map<String, Map<String, Integer>> getplayerStats(@PathVariable String playerName) {
+		
+		StatsParser.parseStats();
 		Map<String, Map<String, Integer>> playerStats = StatsParser.allPlayerStats.get(MojangAPI.uuidCache.get(playerName)).getStats();
 		
 		if (playerStats == null) {

@@ -29,10 +29,13 @@
 	
 	const processGeneralStats = (data) => {
 			//Extract and format `minecraft:custom` stats
-			generalStats = Object.entries(data).map(([key, value]) => ({
-				name: convertStatName(key.replace("minecraft:", "")),
-				value: convertStatValue(key.replace("minecraft:", ""), value),
-			}));
+			
+			generalStats = Object.entries(data)
+				.sort((a, b) => b[1] - a[1])
+				.map(([key, value]) => ({
+					name: convertStatName(key.replace("minecraft:", "")),
+					value: convertStatValue(key.replace("minecraft:", ""), value),
+				}));
 	}
 	
 	const processItemStats = (data) => {

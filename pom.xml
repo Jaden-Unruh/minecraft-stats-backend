@@ -10,15 +10,25 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>minecraft-stats-backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1-SERVER</version>
 	<name>minecraft-stats-backend</name>
 	<description>Server-side for minecraft stats tool</description>
-	<url/>
+	<url>https://github.com/Jaden-Unruh/minecraft-stats-backend</url>
 	<licenses>
 		<license/>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<name>Jaden Unruh</name>
+			<organization>J3L+ SMP</organization>
+			<email>jadenrunruh@gmail.com</email>
+			<roles>
+				<role>Front-end Developer</role>
+				<role>Administrator</role>
+				<role>Back-end Developer</role>
+				<role>All the shit</role>
+			</roles>
+		</developer>
 	</developers>
 	<scm>
 		<connection/>

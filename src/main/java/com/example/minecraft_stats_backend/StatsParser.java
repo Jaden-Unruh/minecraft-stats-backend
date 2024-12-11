@@ -12,7 +12,11 @@ public class StatsParser {
 	static Map<String, PlayerStats> allPlayerStats = new HashMap<>();
 	
 	static void parseStats() {
-		String statsFolderPath = "G:\\Minecraft Servers\\Azure server\\stats tool testing\\stats";
+		
+		//DONE: set up cron script to copy stats every hour
+		//DONE: re-backup world, update maps
+		//DONE: UPDATE TO SERVER-SIDE LOCATION - once locations updated, switch pom version and recompile
+		String statsFolderPath = "/home/azureuser/webpage/stats";
 		File statsFolder = new File(statsFolderPath);
 		
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -35,5 +39,4 @@ public class StatsParser {
 			System.err.println("Stats folder does not exist or is not a directory.");
 		}
 	}
-	
 }

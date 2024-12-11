@@ -22,7 +22,8 @@ public class BackupsParser {
 	
 	static void parseBackups() {
 		
-		String backupsName = "G:\\Minecraft Servers\\Azure server\\stats tool testing\\backups.txt";
+		//DONE: UPDATE TO SERVER-SIDE LOCATION
+		String backupsName = "/home/azureuser/webpage/backups.txt";
 		File backupsFile = new File(backupsName);
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(backupsFile))) {
