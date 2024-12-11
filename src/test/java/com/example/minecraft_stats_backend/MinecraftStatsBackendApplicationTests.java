@@ -9,5 +9,4 @@ class MinecraftStatsBackendApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

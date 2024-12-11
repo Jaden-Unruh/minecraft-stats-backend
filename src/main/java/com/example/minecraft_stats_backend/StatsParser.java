@@ -13,9 +13,7 @@ public class StatsParser {
 	
 	static void parseStats() {
 		
-		//DONE: set up cron script to copy stats every hour
-		//DONE: re-backup world, update maps
-		//DONE: UPDATE TO SERVER-SIDE LOCATION - once locations updated, switch pom version and recompile
+		// String statsFolderPath = "G:\\Minecraft Servers\\Azure server\\stats tool testing\\stats";
 		String statsFolderPath = "/home/azureuser/webpage/stats";
 		File statsFolder = new File(statsFolderPath);
 		
