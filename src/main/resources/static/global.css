@@ -60,3 +60,9 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
+
+.content {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}

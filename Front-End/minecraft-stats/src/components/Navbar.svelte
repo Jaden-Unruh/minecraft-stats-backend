@@ -46,7 +46,7 @@
 		<a href="/players">Players</a>
 		<a href="/leaderboards">Leaderboards</a>
 		<a href="/backups">Backups</a>
-		<a href="/world-map">World Map</a>
+		<a href="/map">World Map</a>
 		<a href="https://github.com/Jaden-Unruh/minecraft-stats-backend" target="_blank">GitHub</a>
 	</div>
 </nav>

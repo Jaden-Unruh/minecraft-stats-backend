@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>minecraft-stats-backend</artifactId>
-	<version>1.1.0-SERVER</version>
+	<version>1.2.0-SERVER</version>
 	<name>minecraft-stats-backend</name>
 	<description>Server-side for minecraft stats tool</description>
 	<url>https://github.com/Jaden-Unruh/minecraft-stats-backend</url>

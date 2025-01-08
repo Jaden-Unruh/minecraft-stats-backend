@@ -19,8 +19,8 @@
 		currentRoute = "players";
 	} else if (path === "/backups") {
 		currentRoute = "backups";
-	} else if (path === "/world-map") {
-		currentRoute = "world-map";
+	} else if (path === "/map") {
+		currentRoute = "map";
 	} else if (path.startsWith("/stats/")) {
 		currentRoute = "stats";
 		playerName = path.split("/stats/")[1];
@@ -50,7 +50,7 @@
 			<PlayerList />
 		{:else if currentRoute === "backups"}
 			<Backups />
-		{:else if currentRoute === "world-map"}
+		{:else if currentRoute === "map"}
 			<Map />
 		{:else if currentRoute === "stats"}
 			<Stats {playerName} />
