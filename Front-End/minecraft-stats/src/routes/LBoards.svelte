@@ -14,6 +14,7 @@
 		{ name: "Mob Kills", key: "minecraft:mob_kills", location: "custom", formatter: (v) => v },
 		{ name: "Deaths", key: "minecraft:deaths", location: "custom", formatter: (v) => v },
 		{ name: "Blocks Mined", key: "total_blocks_mined", location: "computed", formatter: (v) => v },
+		{ name: "Gravel Placed ;)", key: "minecraft:gravel", location: "used", formatter: (v) => v }
 	];
 	
 	onMount(async () => {
@@ -35,6 +36,7 @@
 					name: players[uuid],
 					custom: playerStats["stats"]["minecraft:custom"] || {},
 					total_blocks_mined: blocksMined,
+					used: playerStats["stats"]["minecraft:used"] || {}
 				};
 			});
 			

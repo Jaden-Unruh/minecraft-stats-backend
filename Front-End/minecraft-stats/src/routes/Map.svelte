@@ -12,7 +12,7 @@
 </style>
 
 <iframe
-	src="/map/index.html"
+	src="/api/map/index.html"
 	class="iframe-container"
 	title="J3L+S2 World Map">
 </iframe>
