@@ -54,7 +54,8 @@
 	{:else}
 		{#each players as {uuid, name}}
 			<div class="player-item">
-				<span><a href={`/stats/${name}`}><strong>Name:</strong> {name}; <strong>UUID:</strong> {uuid}</a></span>
+				<span><strong>Name:</strong> {name}; <strong>UUID:</strong> {uuid}</span><br>
+				<span><a href={`/stats/${name}`}>view player's stats</a>        <a href={`/inventory/${name}`}>view player's inventory</a></span>
 			</div>
 		{/each}
 	{/if}

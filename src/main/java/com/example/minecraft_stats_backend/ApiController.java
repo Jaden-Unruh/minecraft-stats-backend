@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -56,8 +58,8 @@ public class ApiController {
 		return BackupsParser.getBackups();
 	}
 	
-	//private final Path mapDirectory  = Paths.get("/home/azureuser/webpage/map");
-	private final Path mapDirectory = Paths.get("G:\\Minecraft Servers\\Azure server\\stats tool testing\\map");
+	private final Path mapDirectory  = Paths.get("/home/azureuser/webpage/map");
+	// private final Path mapDirectory = Paths.get("G:\\Minecraft Servers\\Azure server\\stats tool testing\\map");
 	
 	@GetMapping("/map/**")
 	public ResponseEntity<Resource> getMapFile(HttpServletRequest request) {
@@ -75,6 +77,29 @@ public class ApiController {
 			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, contentType != null ? contentType : "application/octet-stream").body(resource);
 		} catch (IOException e) {
 			return ResponseEntity.badRequest().build();
+		}
+	}
+	
+	@GetMapping("/textures/{itemName}")
+	public ResponseEntity<Resource> getItemTexture(@PathVariable String itemName) {
+		
+		Resource resource = new ClassPathResource("static/assets/textures/" + itemName + ".png");
+		
+		if (!resource.exists())
+			resource = new ClassPathResource("static/assets/textures/barrier.png");
+		
+		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/png").body(resource);
+	}
+	
+	@GetMapping("/inventories/{playerName}")
+	public ResponseEntity<Map<String, List<Map<String,Object>>>> getPlayerInventory(@PathVariable String playerName) {
+		try {
+			Map<String, List<Map<String,Object>>> inventory = InventoryParser.getPlayerInventory(MojangAPI.uuidCache.get(playerName));
+			return ResponseEntity.ok(inventory);
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.badRequest().body(null);
+		} catch (IOException e) {
+			return ResponseEntity.internalServerError().body(null);
 		}
 	}
 } 

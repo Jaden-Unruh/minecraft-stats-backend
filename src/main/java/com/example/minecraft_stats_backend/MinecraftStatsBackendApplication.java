@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MinecraftStatsBackendApplication {
 
 	// TO CHANGE TO SERVER-SIDE
-		// update file locations in BackupParser.java, StatsParser.java, ApiController.java
+		// update file locations in BackupParser.java, StatsParser.java, ApiController.java, InventoryParser.java"
 		// ensure prod release in application.properties
 	
 	public static void main(String[] args) {

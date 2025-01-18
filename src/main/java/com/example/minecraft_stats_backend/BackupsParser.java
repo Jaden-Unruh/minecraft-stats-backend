@@ -22,8 +22,8 @@ public class BackupsParser {
 	
 	static void parseBackups() {
 		
-		String backupsName = "G:\\Minecraft Servers\\Azure server\\stats tool testing\\backups.txt";
-		// String backupsName = "/home/azureuser/webpage/backups.txt";
+		// String backupsName = "G:\\Minecraft Servers\\Azure server\\stats tool testing\\backups.txt";
+		String backupsName = "/home/azureuser/webpage/backups.txt";
 		File backupsFile = new File(backupsName);
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(backupsFile))) {
@@ -68,4 +68,4 @@ class Backup  {
 		this.size = size;
 		this.address = address;
 	}
-} 
+}

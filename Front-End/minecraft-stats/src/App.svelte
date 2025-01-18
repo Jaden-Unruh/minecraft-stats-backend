@@ -7,6 +7,7 @@
 	import Map from './routes/Map.svelte';
 	import Stats from './routes/Stats.svelte';
 	import LBoards from './routes/LBoards.svelte';
+	import Inventory from './routes/Inventory.svelte';
 	
 	let currentRoute = "home";
 	let playerName = null;
@@ -26,6 +27,9 @@
 		playerName = path.split("/stats/")[1];
 	} else if (path === "/leaderboards") {
 		currentRoute = "boards";
+	} else if (path.startsWith("/inventory/")) {
+		currentRoute = "inventory";
+		playerName = path.split("/inventory/")[1];
 	}
 </script>
 
@@ -56,6 +60,8 @@
 			<Stats {playerName} />
 		{:else if currentRoute === "boards"}
 			<LBoards />
+		{:else if currentRoute === "inventory"}
+			<Inventory {playerName} />
 		{/if}
 	</div>
 	<Footer />
