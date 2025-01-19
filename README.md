@@ -34,10 +34,10 @@ The server front-end pages run off of an API at `<address>:8080/api`. The api ha
 
 - `<address>:8080/api/inventories/{playerName}` returns a large .json file with the specified player's inventory data.
 
-### The backend
+### The backend and program details
 
-I'll write this portion of the README later.
+This tool uses a backend programmed in Java using Spring Boot and Maven, and all front-end pages are javascript compiled from Svelte. Svelte handles all routing except the API, Spring redirects every mapping except `/api/*` to `index.html` where mappings are handled by updating page content, rather than loading a new page.
 
+On certain API calls (stats, players, backups), the backend will re-parse data from local files on the server to ensure up-to-date information. In a larger deployment, this would be scheduled to avoid extra overhead, but on such a small scale this way is acceptable.
 
-
-
+API calls to players uses the [Mojang API]([Mojang API – Minecraft Wiki](https://minecraft.wiki/w/Mojang_API)) to map player names to UUIDs.

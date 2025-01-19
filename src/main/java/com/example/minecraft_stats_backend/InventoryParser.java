@@ -18,8 +18,8 @@ import net.querz.nbt.tag.Tag;
 
 public class InventoryParser {
 	
-	// private final static Path playerDataPath = Path.of("G:\\Minecraft Servers\\Azure server\\backups\\world\\playerdata");
-	private final static Path playerDataPath = Path.of("/home/azureuser/webpage/playerdata");
+	private final static Path playerDataPath = Path.of("G:\\Minecraft Servers\\Azure server\\backups\\world\\playerdata");
+	// private final static Path playerDataPath = Path.of("/home/azureuser/webpage/playerdata");
 	
 	public static Map<String,List<Map<String,Object>>> getPlayerInventory(String uuid) throws IOException {
 		

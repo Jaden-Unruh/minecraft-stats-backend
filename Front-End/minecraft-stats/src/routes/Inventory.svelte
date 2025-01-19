@@ -178,6 +178,22 @@
 		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 		transform: translateX(-50%);
 	}
+	
+	.item-number {
+		position: absolute;
+		right: 5px;
+		bottom: -25px;
+		font-size: 10px;
+	}
+	
+	.item-icon {
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 </style>
 
 <div class="centered">
@@ -224,6 +240,9 @@
 							alt={item.id}
 							class="item-icon"
 						/>
+						{#if item.count != 1}
+							<p class="item-number">{item.count}</p>
+						{/if}
 					{/if}
 					
 					
@@ -236,12 +255,15 @@
 										on:mouseenter={(event) => handleHover(shulkerItem, event)}
 										on:mouseleave={() => handleLeave()}
 									>
-										{#if item.id !== 'empty'}
+										{#if shulkerItem.id !== 'empty'}
 											<img
 												src={`/api/textures/${shulkerItem.id}`}
 												alt={shulkerItem.id}
 												class="item-icon"
 											/>
+											{#if shulkerItem.count != 1}
+												<p class="item-number">{shulkerItem.count}</p>
+											{/if}
 										{/if}
 									</div>
 								{/each}
@@ -270,6 +292,9 @@
 							alt={item.id}
 							class="item-icon"
 						/>
+						{#if item.count != 1}
+							<p class="item-number">{item.count}</p>
+						{/if}
 					{/if}
 					
 					
@@ -282,12 +307,15 @@
 										on:mouseenter={(event) => handleHover(shulkerItem, event)}
 										on:mouseleave={() => handleLeave()}
 									>
-										{#if item.id !== 'empty'}
+										{#if shulkerItem.id !== 'empty'}
 											<img
 												src={`/api/textures/${shulkerItem.id}`}
 												alt={shulkerItem.id}
 												class="item-icon"
 											/>
+											{#if shulkerItem.count != 1}
+												<p class="item-number">{shulkerItem.count}</p>
+											{/if}
 										{/if}
 									</div>
 								{/each}

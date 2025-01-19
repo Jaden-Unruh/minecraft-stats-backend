@@ -58,8 +58,8 @@ public class ApiController {
 		return BackupsParser.getBackups();
 	}
 	
-	private final Path mapDirectory  = Paths.get("/home/azureuser/webpage/map");
-	// private final Path mapDirectory = Paths.get("G:\\Minecraft Servers\\Azure server\\stats tool testing\\map");
+	// private final Path mapDirectory  = Paths.get("/home/azureuser/webpage/map");
+	private final Path mapDirectory = Paths.get("G:\\Minecraft Servers\\Azure server\\stats tool testing\\map");
 	
 	@GetMapping("/map/**")
 	public ResponseEntity<Resource> getMapFile(HttpServletRequest request) {

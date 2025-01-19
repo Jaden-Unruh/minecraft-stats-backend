@@ -13,8 +13,8 @@ public class StatsParser {
 	
 	static void parseStats() {
 		
-		// String statsFolderPath = "G:\\Minecraft Servers\\Azure server\\stats tool testing\\stats";
-		String statsFolderPath = "/home/azureuser/webpage/stats";
+		String statsFolderPath = "G:\\Minecraft Servers\\Azure server\\stats tool testing\\stats";
+		// String statsFolderPath = "/home/azureuser/webpage/stats";
 		File statsFolder = new File(statsFolderPath);
 		
 		ObjectMapper objectMapper = new ObjectMapper();

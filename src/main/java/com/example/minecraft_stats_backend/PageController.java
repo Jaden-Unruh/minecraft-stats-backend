@@ -11,11 +11,6 @@ public class PageController {
 		return "index.html";
 	}
 	
-	@GetMapping("/stats/{playername}")
-	public String stats() {
-		return "forward:/index.html";
-	}
-	
 	@GetMapping("/**/{path:[^\\.]*}")
 	public String redirect() {
 		return "forward:/index.html";
