@@ -40,4 +40,4 @@ This tool uses a backend programmed in Java using Spring Boot and Maven, and all
 
 On certain API calls (stats, players, backups), the backend will re-parse data from local files on the server to ensure up-to-date information. In a larger deployment, this would be scheduled to avoid extra overhead, but on such a small scale this way is acceptable.
 
-API calls to players uses the [Mojang API]([Mojang API – Minecraft Wiki](https://minecraft.wiki/w/Mojang_API)) to map player names to UUIDs.
+API calls to players uses the [Mojang API](https://minecraft.wiki/w/Mojang_API) to map player names to UUIDs.
