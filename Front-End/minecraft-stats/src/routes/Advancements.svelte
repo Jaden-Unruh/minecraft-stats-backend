@@ -48,7 +48,7 @@
 		margin: 2rem auto;
 		max-width: 600px;
 		padding: 1rem;
-		border: 3px solid #ffaa00;
+		border: 3px solid #fa0;
 		border-radius: 8px;
 	}
 
@@ -61,9 +61,9 @@
 	.advancement-item {
 		margin-bottom: 1rem;
 		padding: 1rem;
-		border: 1px solid #aa00aa;
+		border: 1px solid #a0a;
 		border-radius: 5px;
-		background-color: 333333;
+		background-color: #333;
 	}
 	
 	.advancement-title {

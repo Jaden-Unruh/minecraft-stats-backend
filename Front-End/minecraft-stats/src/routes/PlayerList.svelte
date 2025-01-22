@@ -33,14 +33,79 @@
 	}
 	
 	.player-item {
-		display: flex;
+		display: grid;
+		grid-template-columns: 2fr 1fr 1fr;
+		gap: 5px;
+		grid-template-rows: 1fr 1fr;
 		justify-content: space-between;
 		padding: 0.5rem 0;
-		border-bottom: 1px solid #ddd;
+		border-bottom: 2px solid #fa0;
 	}
 	
 	.player-item:last-child {
 		border-bottom: none;
+	}
+	
+	.player-name {
+		grid-column: 1;
+		grid-row: 1;
+		font-weight: bold;
+		font-size: 24px;
+		margin: 0;
+	}
+	
+	.player-uuid {
+		grid-column: 1;
+		grid-row: 2;
+	}
+	
+	.button {
+		grid-column: 3;
+		grid-row: 1 / 3;
+		display: inline-block;
+		border-radius: 4px;
+		background-color: #ccc;
+		border: 3px solid #a0a;
+		color: #000;
+		text-align: center;
+		font-size: 16px;
+		padding: 10px;
+		width: 100%;
+		transition: all 0.5s;
+		cursor: pointer;
+		margin: 5px;
+		overflow: hidden;
+	}
+	
+	.button:hover {
+		background-color: #a0a;
+		color: #fff;
+	}
+	
+	.button span {
+		cursor: pointer;
+		display: inline-block;
+		position: relative;
+		transition: 0.5s;
+	}
+	
+	.button span:after {
+		content: '\00bb';
+		position: absolute;
+		opacity: 0;
+		top: 0;
+		right: -10px;
+		transition: 0.5s;
+		color: #fa0;
+	}
+	
+	.button:hover span {
+		padding-right: 10px;
+	}
+	
+	.button:hover span:after {
+		opacity: 1;
+		right: 0;
 	}
 </style>
 
@@ -54,10 +119,9 @@
 	{:else}
 		{#each players as {uuid, name}}
 			<div class="player-item">
-				<table>
-				<tr><th><strong>Name:</strong> {name};</th><th><strong>UUID:</strong> {uuid}</th></tr>
-				<tr><td><a href={`/stats/${name}`}>view player's stats</a></td><td><a href={`/inventory/${name}`}>view player's inventory</a> <a href={`/advancements/${name}`}>view player's advancements</a></td></tr>
-				</table>			
+				<div class="player-name">{name}</div>
+				<div class="player-uuid">{uuid}</div>
+				<button type="button" class="button" onclick="location.href='/player/{name}';"><span>View {name}</span></button>
 			</div>
 		{/each}
 	{/if}
