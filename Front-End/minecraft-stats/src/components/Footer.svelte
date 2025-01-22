@@ -4,7 +4,7 @@
 		padding: 1rem;
 		background-color: #333;
 		color: white;
-		border-top: 3px solid #ffaa00;
+		border-top: 3px solid #fa0;
 	}
 	
 	a {

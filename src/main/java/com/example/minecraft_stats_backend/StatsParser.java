@@ -37,4 +37,4 @@ public class StatsParser {
 			System.err.println("Stats folder does not exist or is not a directory.");
 		}
 	}
-}
+} 

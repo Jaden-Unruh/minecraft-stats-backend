@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -99,6 +101,40 @@ public class ApiController {
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.badRequest().body(null);
 		} catch (IOException e) {
+			return ResponseEntity.internalServerError().body(null);
+		}
+	}
+	
+	@GetMapping("/advancements/{playerName}")
+	public ResponseEntity<Map<String, String>> getAdvancements(@PathVariable String playerName) {
+		try {
+			Map<String, String> advancements = AdvancementParser.getAdvancements(MojangAPI.uuidCache.get(playerName));
+			return ResponseEntity.ok(advancements);
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.badRequest().body(null);
+		} catch (IOException | ParseException e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(null);
+		}
+	}
+	
+	@GetMapping("/allAdvancementData")
+	public ResponseEntity<Map<String, Map<String, String>>> getAllAdvancementData() {
+		return ResponseEntity.ok(AdvancementParser.advancementInfo);
+	}
+	
+	@GetMapping("/playerOverview/{playerName}")
+	public ResponseEntity<Map<String, Integer>> getOverview(@PathVariable String playerName) {
+		try {
+			Map<String, Integer> overview = new HashMap<>();
+			
+			overview.put("Advancements", AdvancementParser.getAdvancements(MojangAPI.uuidCache.get(playerName)).size());
+			overview.put("Playtime", StatsParser.allPlayerStats.get(MojangAPI.uuidCache.get(playerName)).getStats().get("minecraft:custom").get("minecraft:play_time"));
+			
+			return ResponseEntity.ok(overview);
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.badRequest().body(null);
+		} catch (IOException | ParseException e) {
 			return ResponseEntity.internalServerError().body(null);
 		}
 	}

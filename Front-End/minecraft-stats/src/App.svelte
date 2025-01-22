@@ -8,6 +8,8 @@
 	import Stats from './routes/Stats.svelte';
 	import LBoards from './routes/LBoards.svelte';
 	import Inventory from './routes/Inventory.svelte';
+	import Advancements from './routes/Advancements.svelte';
+	import Player from './routes/Player.svelte';
 	
 	let currentRoute = "home";
 	let playerName = null;
@@ -15,21 +17,27 @@
 	const path = window.location.pathname;
 	
 	if (path === "/") {
-		currentRoute = "home";
+		currentRoute = "Home";
 	} else if (path === "/players") {
-		currentRoute = "players";
+		currentRoute = "Players";
 	} else if (path === "/backups") {
-		currentRoute = "backups";
+		currentRoute = "Backups";
 	} else if (path === "/map") {
-		currentRoute = "map";
+		currentRoute = "Map";
 	} else if (path.startsWith("/stats/")) {
-		currentRoute = "stats";
+		currentRoute = "Stats";
 		playerName = path.split("/stats/")[1];
 	} else if (path === "/leaderboards") {
-		currentRoute = "boards";
+		currentRoute = "Leaderboards";
 	} else if (path.startsWith("/inventory/")) {
-		currentRoute = "inventory";
+		currentRoute = "Inventory";
 		playerName = path.split("/inventory/")[1];
+	} else if (path.startsWith("/advancements/")) {
+		currentRoute = "Advancements";
+		playerName = path.split("/advancements/")[1];
+	} else if (path.startsWith("/player/")) {
+		currentRoute = "Player";
+		playerName = path.split("/player/")[1];
 	}
 </script>
 
@@ -45,23 +53,31 @@
 	}
 </style>
 
+<svelte:head>
+	<title>J³L+ SMP: {currentRoute}</title>
+</svelte:head>
+
 <main>
 	<Navbar bind:currentRoute />
 	<div class="content">
-		{#if currentRoute === "home"}
+		{#if currentRoute === "Home"}
 			<Home />
-		{:else if currentRoute === "players"}
+		{:else if currentRoute === "Players"}
 			<PlayerList />
-		{:else if currentRoute === "backups"}
+		{:else if currentRoute === "Backups"}
 			<Backups />
-		{:else if currentRoute === "map"}
+		{:else if currentRoute === "Map"}
 			<Map />
-		{:else if currentRoute === "stats"}
+		{:else if currentRoute === "Stats"}
 			<Stats {playerName} />
-		{:else if currentRoute === "boards"}
+		{:else if currentRoute === "Leaderboards"}
 			<LBoards />
-		{:else if currentRoute === "inventory"}
+		{:else if currentRoute === "Inventory"}
 			<Inventory {playerName} />
+		{:else if currentRoute === "Advancements"}
+			<Advancements {playerName} />
+		{:else if currentRoute === "Player"}
+			<Player {playerName} />
 		{/if}
 	</div>
 	<Footer />

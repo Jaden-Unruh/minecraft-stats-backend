@@ -6,7 +6,7 @@
 		padding: 1rem 2rem;
 		background-color: #333;
 		color: white;
-		border-bottom: 3px solid #aa00aa;
+		border-bottom: 3px solid #a0a;
 	}
 	
 	.menu {

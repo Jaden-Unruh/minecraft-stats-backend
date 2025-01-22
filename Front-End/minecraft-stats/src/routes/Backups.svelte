@@ -8,7 +8,7 @@
 	const fetchBackups = async () => {
 		try {
 			const response = await fetch("/api/backups");
-			if (!response.ok) throw new Error(`Error: ${resopnse.statusText}`);
+			if (!response.ok) throw new Error(`Error: ${response.statusText}`);
 			backups = await response.json();
 		} catch (err) {
 			error = err.message;
