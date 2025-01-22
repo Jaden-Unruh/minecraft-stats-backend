@@ -39,6 +39,7 @@
 				return item || { id: "empty", count: 0, slot }; //Placeholder for empty slots
 			});
 		} catch (err) {
+			console.error(err);
 			error = err.message;
 		} finally {
 			loading = false;

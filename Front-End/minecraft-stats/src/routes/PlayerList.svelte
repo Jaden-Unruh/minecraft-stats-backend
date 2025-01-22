@@ -56,7 +56,7 @@
 			<div class="player-item">
 				<table>
 				<tr><th><strong>Name:</strong> {name};</th><th><strong>UUID:</strong> {uuid}</th></tr>
-				<tr><td><a href={`/stats/${name}`}>view player's stats</a></td><td><a href={`/inventory/${name}`}>view player's inventory</a></td></tr>
+				<tr><td><a href={`/stats/${name}`}>view player's stats</a></td><td><a href={`/inventory/${name}`}>view player's inventory</a> <a href={`/advancements/${name}`}>view player's advancements</a></td></tr>
 				</table>			
 			</div>
 		{/each}
