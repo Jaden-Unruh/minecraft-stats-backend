@@ -2,6 +2,8 @@
 
 ## By J_dg aka Jaden Unruh
 
+This program runs next to the server jar on the Minecraft server I host through Microsoft Azure, and it provides a web interface that lets players view relevant details about the server - a world map, player stats, advancements, and inventories, etc. I used this as an opportunity to learn more about web development, learn Svelte, and figure out how to better use Spring to host webpages.
+
 ### Web Interface
 
 Home, or `<address>:8080/`, features a few screenshots from the server, topped by a navigation bar on top and a footer below that will persist across all pages. In the navigation bar, clicking the logo and server name in the top left will always take users back to this page, as will `Home`, the first of the navigational links. The rest of the navigational links will take users to each of the pages as described below.
