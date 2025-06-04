@@ -201,6 +201,10 @@
 	}
 </style>
 
+<svelte:head>
+	<title>{playerName}'s inventory</title>
+</svelte:head>
+
 <div class="centered">
 	{#if loading}
 		<p>Loading stats for {playerName}...</p>

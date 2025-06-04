@@ -59,6 +59,11 @@
 	li:last-child {
 		border-bottom: none;
 	}
+	
+	a {
+		color: black;
+		text-decoration: none;
+	}
 </style>
 
 <div class="leaderboard">
@@ -66,7 +71,7 @@
 	<ul>
 		{#each topPlayers as { name, value }}
 			<li>
-				<span>{name}</span>
+				<span><a href={'/players/' + name}>{name}</a></span>
 				<span>{formatter(value)}</span>
 			</li>
 		{/each}

@@ -15,6 +15,11 @@
 	<Footer />
 </footer>
 
+<svelte:head>
+	<meta name="description" content="Home page for the J3L+ SMP Season 2, with player stats, leaderboards, and more." />
+	<link rel="icon" href="/favicon.ico" />
+</svelte:head>
+
 <style>
 	main {
 		min-height: 80vh;

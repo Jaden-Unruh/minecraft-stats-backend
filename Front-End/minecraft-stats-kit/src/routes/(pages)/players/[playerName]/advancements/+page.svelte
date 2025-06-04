@@ -87,6 +87,10 @@
 	}
 </style>
 
+<svelte:head>
+	<title>{playerName}'s advancements</title>
+</svelte:head>
+
 <div class="advancements-div">
 	{#if loading}
 		<p>Loading advancements for {playerName}...</p>

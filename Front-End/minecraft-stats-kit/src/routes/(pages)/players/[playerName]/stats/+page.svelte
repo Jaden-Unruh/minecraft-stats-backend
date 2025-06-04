@@ -190,6 +190,10 @@
 	}
 </style>
 
+<svelte:head>
+	<title>{playerName}'s stats</title>
+</svelte:head>
+
 <div class="stats-container">
 	{#if loading}
 		<p>Loading stats for {playerName}...</p>

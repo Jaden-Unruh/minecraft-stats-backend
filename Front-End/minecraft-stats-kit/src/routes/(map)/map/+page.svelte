@@ -11,6 +11,10 @@
 	}
 </style>
 
+<head>
+	<title>J3L+S2 World Map</title>
+</head>
+
 <iframe
 	src="/api/map/index.html"
 	class="iframe-container"

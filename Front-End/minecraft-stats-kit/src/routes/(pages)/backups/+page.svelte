@@ -42,6 +42,10 @@
 	}
 </style>
 
+<svelte:head>
+	<title>Backups</title>
+</svelte:head>
+
 <p>Backups are currently run manually, and this list will be updated each time I make a new one.<br>In the future, this may be automated.</p>
 <div class="backup-list">
 	{#if loading}

@@ -109,6 +109,10 @@
 	}
 </style>
 
+<svelte:head>
+	<title>J3L+S2 Players</title>
+</svelte:head>
+
 <div class="player-list">
 	{#if loading}
 		<p>Loading players...</p>

@@ -100,9 +100,16 @@
 	}
 </style>
 
+<svelte:head>
+	<title>J3L+ SMP S2</title>
+	<meta name="description" content="The J3L+ SMP is a Minecraft server originally created by a group of four roommates and very close friends. In its first season, it was hosted locally by me, Jaden, one of the four. We reset for season two in October of 2024, and decided to invite some more friends. I switched to hosting the server through Azure for better stability and uptime, and our world has far exceeded my expectations." />
+	<meta name="keywords" content="J3L+, SMP, Minecraft, server, friends, Azure, season two, gaming, J_dg, Jaden, Unruh, Jaden Unruh" />
+	<link rel="canonical" href="https://j3lsmp.org/" />
+</svelte:head>
+
 <div class="slideshow-container">
 	{#if images.length > 0}
-		<img src={"api/image/" + images[currentIndex]} alt="Slideshow image" class="image" />
+		<img src={"api/image/" + images[currentIndex]} alt="Slideshow" class="image" />
 		<div class="arrow prev" on:click="{prevImage}">❮</div>
 		<div class="arrow next" on:click="{nextImage}">❯</div>
 	{/if}

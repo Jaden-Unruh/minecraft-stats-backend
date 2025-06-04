@@ -13,8 +13,7 @@ public class StatsParser {
 	
 	static void parseStats() {
 		
-		// String statsFolderPath = "G:\\Minecraft Servers\\Azure server\\stats tool testing\\stats";
-		String statsFolderPath = "/home/azureuser/webpage/stats";
+		String statsFolderPath = MinecraftStatsBackendApplication.IS_LOCAL_TEST ? "G:\\Minecraft Servers\\Azure server\\stats tool testing\\stats" : "/home/jacc/webpage/stats";
 		File statsFolder = new File(statsFolderPath);
 		
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -37,4 +36,4 @@ public class StatsParser {
 			System.err.println("Stats folder does not exist or is not a directory.");
 		}
 	}
-} 
+}

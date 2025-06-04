@@ -24,8 +24,7 @@ public class BackupsParser {
 		
 		backups = new ArrayList<>();
 		
-		// String backupsName = "G:\\Minecraft Servers\\Azure server\\stats tool testing\\backups.txt";
-		String backupsName = "/home/azureuser/webpage/backups.txt";
+		String backupsName = MinecraftStatsBackendApplication.IS_LOCAL_TEST ? "G:\\Minecraft Servers\\Azure server\\stats tool testing\\backups.txt" : "/home/jacc/webpage/backups.txt";
 		File backupsFile = new File(backupsName);
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(backupsFile))) {

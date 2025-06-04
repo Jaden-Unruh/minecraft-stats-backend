@@ -13,5 +13,6 @@
 </style>
 
 <footer>
-	2024 <a href=https://linktr.ee/JadenUnruh>Jaden Unruh</a>, J³L+ SMP
+	2024 <a href=https://linktr.ee/JadenUnruh>Jaden Unruh</a>, J³L+ SMP<br>
+	<a href="/sitemap">Site Map</a>
 </footer>

@@ -7,6 +7,7 @@
 	let playerName;
 	
 	let playerOverview = [];
+	let online = false;
 	
 	const fetchOverview = async () => {
 		$: playerName = $page.params.playerName;
@@ -16,6 +17,7 @@
 			const response = await fetch(`/api/playerOverview/${playerName}`);
 			if (!response.ok) throw new Error("Failed to fetch player overview");
 			playerOverview = await response.json();
+			// online = playerOverview.Online == "true";
 		} catch (err) {
 			console.error(err);
 			error = err.message;
@@ -113,12 +115,23 @@
 	}
 </style>
 
+<svelte:head>
+	<title>{playerName}</title>
+</svelte:head>
+
 <div class="player-div">
 	<iframe class="playerModel" src={`https://minerender.org/embed/skin?skin=${playerName}&shadow=true`} frameborder="0"></iframe>
 	<div class="playerInfo">
 		<h2>{playerName}</h2>
 		<p>Play time: {(playerOverview.Playtime / 72000).toFixed(2)} hours</p>
 		<p>Advancements: {playerOverview.Advancements}</p>
+		{#if online}
+			<p>{playerName} is currently online</p>
+			<p>Location: {playerOverview.Position}</p>
+			<p>Health: {playerOverview.Health}</p>
+		{:else}
+			<p>Live player information from the server will be added in a future update. I am still bug-testing the server-side mod that would allow this.</p>
+		{/if}
 	</div>
 	<button type="button" class="button statsButton" on:click={() => {location.href='/players/' + playerName + '/stats';}}><span>View {playerName}'s statistics</span></button>
 	<button type="button" class="button advButton" on:click={() => {location.href='/players/' + playerName + '/advancements';}}><span>View {playerName}'s advancements</span></button>
