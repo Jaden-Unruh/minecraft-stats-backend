@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import Leaderboard from '$lib/Leaderboard.svelte';
 	import CustomLeaderboard from '$lib/CustomLeaderboard.svelte';
+	import LeaderboardLeaderboard from '$lib/LeaderboardLeaderboard.svelte';
 	import { Autocomplete } from '@skeletonlabs/skeleton';
 	import { AutocompleteOption } from '@skeletonlabs/skeleton';
 	
@@ -46,6 +47,8 @@
 	let statKeyOptions = [];
 	
 	let unique = {};
+
+	let leaderboardleaderboardData = [];
 	
 	function onCategorySelection(event) {
 		categoryInput = event.detail.label;
@@ -107,8 +110,10 @@
 			const nResponse = await fetch("/api/listStats");
 			if (!response.ok) throw new Error("Failed to fetch stat names");
 			allStatsNames = await nResponse.json();
-			
-			console.log(allStats);
+
+			const llResponse = await fetch("/api/leaderboardLeaderboard");
+			if (!llResponse.ok) throw new Error("Failed to fetch leaderboard leaderboard");
+			leaderboardleaderboardData = Object.entries(await llResponse.json());
 		} catch (err) {
 			error = err.message;
 			console.error(err.stack);
@@ -245,6 +250,7 @@
 			{#each categories as {name, key, location, formatter }}
 				<Leaderboard {name} {key} {location} {formatter} {allStats} />
 			{/each}
+			<LeaderboardLeaderboard data={leaderboardleaderboardData} boardName={"Leaderboards Led"}/>
 			{#if isSelection}
 				{#key unique}
 					<CustomLeaderboard {selectedCategory} {selectedKey} />

@@ -11,6 +11,8 @@
 	let generalStats = [];
 	let itemStats = [];
 	let mobStats = [];
+
+	let leaderboardsLed = [];
 	
 	const fetchStats = async () => {
 		$: playerName = $page.params.playerName;
@@ -20,6 +22,16 @@
 			const response = await fetch(`/api/stats/${playerName}`);
 			if (!response.ok) throw new Error("Failed to fetch stats");
 			const data = await response.json();
+
+			const lresponse = await fetch(`/api/leaderboardsTopped/${playerName}`);
+			if (!lresponse.ok) throw new Error("Failed to fetch leaderboards led");
+			leaderboardsLed = Object.entries(await lresponse.json())
+				.map(([key, value]) => ({
+					name: key.replace("custom: ", "").replace(/_/g, " "),
+					gap: value,
+				}))
+				.sort((a, b) => b.gap - a.gap);
+			console.log(leaderboardsLed);
 			
 			processGeneralStats(data["minecraft:custom"] || {});
 			processItemStats(data);
@@ -206,6 +218,7 @@
 				<option value="general">General Stats</option>
 				<option value="items">Item Stats</option>
 				<option value="mobs">Mob Stats</option>
+				<option value="leaderboards">Leaderboards led</option>
 			</select>
 		</div>
 		
@@ -265,6 +278,24 @@
 							<td>{killed}</td>
 							<td>{killed_by}</td>
 							<td>{total}</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		{:else if selectedCategory === "leaderboards"}
+			<h2>Leaderboards led</h2>
+			<table class="stats-table">
+				<thead>
+					<tr>
+						<th>Statistic</th>
+						<th>Gap to second</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each leaderboardsLed as { name, gap }}
+						<tr>
+							<td>{name}</td>
+							<td>{gap}</td>
 						</tr>
 					{/each}
 				</tbody>

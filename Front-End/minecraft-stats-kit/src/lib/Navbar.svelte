@@ -129,7 +129,7 @@
 
 <nav>
 	<a href="/"><div class="logo"><img src="/assets/logo.png" alt="J3L+ Logo"> J3L+ SMP S2</div></a>
-	<!--<p>{serverInfo}</p>-->
+	<p>{serverInfo}</p>
 	<div id="menu" class="menu" class:responsive={menuResponsive}>
 		<a href="/">Home</a>
 		<a href="/players">Players</a>

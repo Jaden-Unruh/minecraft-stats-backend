@@ -48,7 +48,14 @@
             <li><span><a href="/mobs/skeleton">/mobs/&lbrace;mobId&rbrace;: Mob</a> - Statistics and leaderboards about kills and deaths for a specific mob (~75 pages)</span></li>
         </ul>
     </li>
-    <li><span><a href="/map">/map: Map</a> - A map of the world, updated manually after large projects</span></li>
+    <li><span><a href="/map">/map: Map</a> - A map of each dimension of the world, updated manually after large projects</span>
+        <ul>
+            <li><span><a href="/map/overworld">/map/overworld: Overworld</a> - The Overworld map</span></li>
+            <li><span><a href="/map/nether">/map/nether: Nether</a> - The Nether map</span></li>
+            <li><span><a href="/map/netherroof">/map/netherroof: Nether Roof</a> - The Nether Roof map</span></li>
+            <li><span><a href="/map/end">/map/end: End</a> - The End map</span></li>
+        </ul>
+    </li>
     <li><span><a href="/players">/players: Player list</a> - A list of players on the server linking to their specific pages</span>
         <ul>
             <li><span><a href="/players/J_dg">/players/&lbrace;playerName&rbrace;: Player</a> - An overview of player stats and links to various player pages (~14 pages, each with 3 sub-pages)</span>
@@ -61,4 +68,5 @@
         </ul>
     </li>
     <li><span><a href="/sitemap">/sitemap: Site Map</a> - This page</span></li>
+    <li><span><a href="/utilities">/utilities: Server Utilities</a> - Tools and utilities for live server and web management</span></li>
 </ul>

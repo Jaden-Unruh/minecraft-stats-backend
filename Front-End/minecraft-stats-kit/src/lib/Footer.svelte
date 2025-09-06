@@ -13,6 +13,6 @@
 </style>
 
 <footer>
-	2024 <a href=https://linktr.ee/JadenUnruh>Jaden Unruh</a>, J³L+ SMP<br>
-	<a href="/sitemap">Site Map</a>
+	© 2025 <a href=https://linktr.ee/JadenUnruh>Jaden Unruh</a>, J³L+ SMP<br>
+	Version 1.6.0 | <a href="/sitemap">Site Map</a> | <a href="/utilities">Utilities</a>
 </footer>

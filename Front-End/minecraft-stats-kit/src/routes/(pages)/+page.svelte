@@ -28,11 +28,15 @@
 	
 	function nextImage() {
 		currentIndex = (currentIndex + 1) % images.length;
+		stopSlideShow();
+		startSlideshow();
 		prefetchImages();
 	}
 	
 	function prevImage() {
 		currentIndex = (currentIndex - 1 + images.length) % images.length;
+		stopSlideShow();
+		startSlideshow();
 		prefetchImages();
 	}
 	

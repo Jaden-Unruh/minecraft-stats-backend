@@ -173,7 +173,7 @@
         <img src="/api/textures/bow" alt="Bow" style="grid-column: 1; grid-row: 3;"/>
         <h3 style="grid-column: 2 / 6; grid-row: 3; text-align: left;">Been killed by mobs {formatNumber(overview.killed_by)} times</h3>
     </div>
-    <h2 class="searchHeader">View server statistics abot a particular mob</h2>
+    <h2 class="searchHeader">View server statistics about a particular mob</h2>
     <input
         class="input"
         type="search"

@@ -125,6 +125,7 @@
 		<h2>{playerName}</h2>
 		<p>Play time: {(playerOverview.Playtime / 72000).toFixed(2)} hours</p>
 		<p>Advancements: {playerOverview.Advancements}</p>
+		<p>{playerName} is first on {playerOverview.Leaderboards} leaderboards. A list can be found on the fourth table in the player stats page below.</p>
 		{#if online}
 			<p>{playerName} is currently online</p>
 			<p>Location: {playerOverview.Position}</p>

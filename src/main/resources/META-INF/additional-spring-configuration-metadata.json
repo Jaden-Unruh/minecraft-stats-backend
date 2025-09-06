@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "minecraft.stats.source",
+    "type": "java.lang.String",
+    "description": "Source directory for stats files to copy"
+  },
+  {
+    "name": "minecraft.stats.dest",
+    "type": "java.lang.String",
+    "description": "Destination directory for stats files to copy"
+  },
+  {
+    "name": "minecraft.advancements.source",
+    "type": "java.lang.String",
+    "description": "Source directory for advancements files to copy"
+  },
+  {
+    "name": "minecraft.advancements.dest",
+    "type": "java.lang.String",
+    "description": "Destination directory for advancements files to copy"
+  },
+  {
+    "name": "discord.bot.token",
+    "type": "java.lang.String",
+    "description": "Token for the discord bot"
+  }
+]}
