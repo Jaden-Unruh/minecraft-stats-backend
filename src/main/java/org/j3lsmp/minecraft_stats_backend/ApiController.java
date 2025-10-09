@@ -157,7 +157,7 @@ public class ApiController {
 
 	private final File imagesDirectory = MinecraftStatsBackendApplication.IS_LOCAL_TEST
 			? new File("G:\\Minecraft Servers\\Azure server\\stats tool testing\\images")
-			: new File("/home/jaden/webpage/images");
+			: new File("E:\\J3L+ Server Live\\webpage\\images");
 
 	@GetMapping("/imageList")
 	public ResponseEntity<Set<String>> getImageList() {

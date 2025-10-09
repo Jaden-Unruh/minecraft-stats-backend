@@ -28,16 +28,16 @@ public class MapApi {
 	Map<String, String> dimensionDirectories = Map.of(
 			"overworld", MinecraftStatsBackendApplication.IS_LOCAL_TEST
 				? "G:\\Minecraft Servers\\Azure server\\stats tool testing\\map\\overworld"
-				: "/home/jaden/webpage/map/overworld",
+				: "E:\\J3L+ Server Live\\webpage\\map\\overworld",
 			"nether", MinecraftStatsBackendApplication.IS_LOCAL_TEST
 				? "G:\\Minecraft Servers\\Azure server\\stats tool testing\\map\\nether"
-				: "/home/jaden/webpage/map/nether",
+				: "E:\\J3L+ Server Live\\webpage\\map\\nether",
 			"end", MinecraftStatsBackendApplication.IS_LOCAL_TEST
 				? "G:\\Minecraft Servers\\Azure server\\stats tool testing\\map\\end"
-				: "/home/jaden/webpage/map/end",
+				: "E:\\J3L+ Server Live\\webpage\\map\\end",
 			"netherroof", MinecraftStatsBackendApplication.IS_LOCAL_TEST
 				? "G:\\Minecraft Servers\\Azure server\\stats tool testing\\map\\netherroof"
-				: "/home/jaden/webpage/map/netherroof");
+				: "E:\\J3L+ Server Live\\webpage\\map\\netherroof");
 	
 	
 	@GetMapping("/{dimension}/**")
@@ -87,10 +87,10 @@ public class MapApi {
 			}
 			
 			String html = Files.readString(filePath);
-			
+			/*
 			if (!paramValue.equals("true"))
 				html = html.replaceAll("src=\"custom.markers.js\"", "src=\"nocustom.markers.js\"");
-			
+			*/
 			return ResponseEntity.ok()
 					.header(HttpHeaders.CONTENT_TYPE, "text/html")
 					.body(html);

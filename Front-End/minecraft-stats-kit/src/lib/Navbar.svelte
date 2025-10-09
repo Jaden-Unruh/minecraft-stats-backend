@@ -134,9 +134,9 @@
 		<a href="/">Home</a>
 		<a href="/players">Players</a>
 		<a href="/leaderboards">Leaderboards</a>
+		<a href="/ratios">Ratios</a>
 		<a href="/items">Items</a>
 		<a href="/mobs">Mobs</a>
-		<a href="/backups">Backups</a>
 		<a href="/map">World Map</a>
 		<a href="https://github.com/Jaden-Unruh/minecraft-stats-backend" target="_blank">GitHub</a>
 		<a class="icon" on:click={toggleMenu}>&#9776;</a>

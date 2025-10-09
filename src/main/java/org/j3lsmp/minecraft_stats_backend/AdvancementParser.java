@@ -23,7 +23,7 @@ import org.springframework.core.io.ClassPathResource;
 
 public class AdvancementParser {
 
-	private final static Path advancementsPath = MinecraftStatsBackendApplication.IS_LOCAL_TEST ? Path.of("G:\\Minecraft Servers\\Azure server\\stats tool testing\\advancements") : Path.of("/home/jaden/webpage/advancements");
+	private final static Path advancementsPath = MinecraftStatsBackendApplication.IS_LOCAL_TEST ? Path.of("G:\\Minecraft Servers\\Azure server\\stats tool testing\\advancements") : Path.of("E:\\J3L+ Server Live\\webpage\\advancements");
 
 	private final static SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss X");
 

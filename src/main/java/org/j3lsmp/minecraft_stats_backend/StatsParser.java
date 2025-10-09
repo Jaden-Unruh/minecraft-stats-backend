@@ -15,7 +15,7 @@ public class StatsParser {
 	
 	static void parseStats() {
 		
-		String statsFolderPath = MinecraftStatsBackendApplication.IS_LOCAL_TEST ? "G:\\Minecraft Servers\\Azure server\\stats tool testing\\stats" : "/home/jaden/webpage/stats";
+		String statsFolderPath = MinecraftStatsBackendApplication.IS_LOCAL_TEST ? "G:\\Minecraft Servers\\Azure server\\stats tool testing\\stats" : "E:\\J3L+ Server Live\\webpage\\stats";
 		File statsFolder = new File(statsFolderPath);
 		
 		ObjectMapper objectMapper = new ObjectMapper();
