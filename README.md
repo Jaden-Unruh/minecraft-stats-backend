@@ -1,5 +1,7 @@
 # Minecraft Stats
 
+## This readme is very very outdated, I will update it in with the next minor update.
+
 ## By J_dg aka Jaden Unruh
 
 This program runs next to the server jar on the Minecraft server I host through Microsoft Azure, and it provides a web interface that lets players view relevant details about the server - a world map, player stats, advancements, and inventories, etc. I used this as an opportunity to learn more about web development, learn Svelte, and figure out how to better use Spring to host webpages.
