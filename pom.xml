@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>minecraft-stats-backend</artifactId>
-	<version>1.6.1-SERVER-1.21.8</version>
+	<version>1.7.0-SERVER-1.21.8</version>
 	<name>minecraft-stats-backend</name>
 	<description>Server-side for minecraft stats tool. Updated for Java version 1.21..</description>
 	<url>https://github.com/Jaden-Unruh/minecraft-stats-backend</url>

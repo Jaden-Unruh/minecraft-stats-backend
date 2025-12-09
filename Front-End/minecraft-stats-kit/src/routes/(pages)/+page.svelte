@@ -1,9 +1,12 @@
 <script>
 	import { onMount } from "svelte";
+	import YirBanner from "$lib/yir/yirBanner.svelte";
 	
 	let images = [];
 	let currentIndex = 0;
 	let interval;
+
+	let isBanner = true;
 	
 	let description = "The J3L SMP is a Minecraft server originally created by a group of four roommates and very close friends. In its first season, it was hosted locally by me, Jaden, one of the four. We reset for season two in October of 2024, and decided to invite some more friends. I switched to hosting the server through Azure for better stability and uptime, and our world has far exceeded my expectations.";
 	
@@ -111,6 +114,7 @@
 	<link rel="canonical" href="https://j3lsmp.org/" />
 </svelte:head>
 
+<YirBanner {isBanner}/>
 <div class="slideshow-container">
 	{#if images.length > 0}
 		<img src={"api/image/" + images[currentIndex]} alt="Slideshow" class="image" />

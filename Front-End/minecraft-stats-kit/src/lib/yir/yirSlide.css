@@ -1,0 +1,31 @@
+.fade-container {
+    opacity: 0;
+    transition: opacity 400ms ease;
+    pointer-events: none;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.fade-container.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hover {
+    text-align: center;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.hoverPost {
+    display: none;
+}
+
+.hover:hover .hoverPre {
+    display: none;
+}
+
+.hover:hover .hoverPost {
+    display: block;
+}
