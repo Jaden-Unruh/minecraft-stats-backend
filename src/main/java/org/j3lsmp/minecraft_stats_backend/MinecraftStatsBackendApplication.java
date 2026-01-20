@@ -21,6 +21,8 @@ public class MinecraftStatsBackendApplication {
 	public static void main(String[] args) throws StreamReadException, DatabindException, IOException {
 		StatsParser.parseStats();
 		MojangAPI.getNames();
+		YIRParser.parseYIR();
+		YIRController.calcPlayerLedStats();
 		BackupsParser.parseBackups();
 		AdvancementParser.getAdvancementMappings();
 		SpringApplication.run(MinecraftStatsBackendApplication.class, args);

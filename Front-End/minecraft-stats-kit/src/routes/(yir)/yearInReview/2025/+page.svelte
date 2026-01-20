@@ -1,30 +1,9 @@
 <script>
     import BannerPath from "$lib/yir/BannerPath.svelte";
     import { goto } from "$app/navigation";
+    import { players } from "$lib/yir/colors.js";
 
     let isBanner = false;
-
-    const players = [
-        { name: "Select...", color: ":#333333" },
-        { name: "J_dg", color: ":#ff00b6" },
-        { name: "lunar_dusting", color: ":#078b0f" },
-        { name: "Y3s_N0_Maybe", color: ":#7d00ff" },
-        { name: "WolfNumberTen", color: ":#333cd0" },
-        { name: "ja_cc", color: ":#ec5800" },
-        { name: "Phoenospace", color: ":#263583" },
-        { name: "leelapm", color: ":#16e5e5" },
-        { name: "genericname0002", color: ":#c4c4c4" },
-        { name: "XanderGee", color: ":#efbf04" },
-        { name: "FinoDinoPlays" , color: ":#bb2222" },
-        { name: "NewYorkMaddie" , color: "-image:linear-gradient(to right, #2ef5ff, #808080, #ff4200)"},
-        { name: "sweetstarfish84", color: ":#f08080" },
-        { name: "Rydog12144", color: ":#00d4ff" },
-        { name: "Cinnamon111", color: ":#ff6b9d" },
-        { name: "superkidbox", color: ":#9d4edd" },
-        { name: "tienwun", color: ":#3a86ff" },
-        { name: "JustChow", color: ":#06d6a0" },
-        { name: "Encorous", color: ":#fb5607" }
-    ];
 
     let open = false;
     let selected = players[0];

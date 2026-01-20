@@ -12,13 +12,13 @@
 	let error = null;
 	
 	const categories = [
-		{ name: "Playtime", key: "minecraft:play_time", location: "custom", formatter: (v) => `${(v / 72000).toFixed(1)} hours` },
-		{ name: "Distance Walked", key: "minecraft:walk_one_cm", location: "custom", formatter: (v) => `${(v / 100000).toFixed(2)} km`},
-		{ name: "Distance by Elytra", key: "minecraft:aviate_one_cm", location: "custom", formatter: (v) => `${(v / 100000).toFixed(2)} km`},
-		{ name: "Mob Kills", key: "minecraft:mob_kills", location: "custom", formatter: (v) => v },
-		{ name: "Deaths", key: "minecraft:deaths", location: "custom", formatter: (v) => v },
-		{ name: "Blocks Mined", key: "total_blocks_mined", location: "computed", formatter: (v) => v },
-		{ name: "Blocks Placed", key: "total_blocks_placed", location: "computed", formatter: (v) => v }
+		{ name: "Playtime", key: "minecraft:play_time", location: "custom", formatter: (v) => `${(v / 72000).toLocaleString(undefined, {maximumFractionDigits: 2})} hours` },
+		{ name: "Distance Walked", key: "minecraft:walk_one_cm", location: "custom", formatter: (v) => `${(v / 100000).toLocaleString(undefined, {maximumFractionDigits: 2})} km`},
+		{ name: "Distance by Elytra", key: "minecraft:aviate_one_cm", location: "custom", formatter: (v) => `${(v / 100000).toLocaleString(undefined, {maximumFractionDigits: 2})} km`},
+		{ name: "Mob Kills", key: "minecraft:mob_kills", location: "custom", formatter: (v) => v.toLocaleString() },
+		{ name: "Deaths", key: "minecraft:deaths", location: "custom", formatter: (v) => v.toLocaleString() },
+		{ name: "Blocks Mined", key: "total_blocks_mined", location: "computed", formatter: (v) => v.toLocaleString() },
+		{ name: "Blocks Placed", key: "total_blocks_placed", location: "computed", formatter: (v) => v.toLocaleString() }
 	];
 	
 	let categoryInput = '';

@@ -34,7 +34,7 @@
 </script>
 
 <div class="fade-container" class:visible={textVisible}>
-    <h3>Over the past 15 months, you played on J3L+ on</h3>
+    <h3>In 2025 (and Oct-Dec 2024), you played on J3L+ on</h3>
     <h2>{info.sessions} occasion{(info.sessions != 1) ? "s" : ""}</h2>
     <h3>For a total of</h3>
     <h2 class=hover>

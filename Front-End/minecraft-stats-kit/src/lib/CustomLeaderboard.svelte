@@ -1,8 +1,14 @@
 <script>
+	import PieChart from "./PieChart.svelte";
+
 	export let selectedCategory;
 	export let selectedKey;
+	export let showChart = false;
+	export let showBoard = true;
 	
 	let entries = [];
+
+	let loaded = false;
 	
 	$: fetchData();
 	
@@ -10,14 +16,13 @@
 		if ((!(selectedCategory === '')) && (!(selectedKey === ''))) {
 			const response = await fetch("/api/leaderboard/" + selectedCategory + "/" + selectedKey);
 			if (!response.ok) throw new Error("Failed to fetch custom leaderboard");
-			console.log(response);
 			let json = await response.json();
-			console.log(json);
 			entries = Object.entries(json)
 					.map(([name, value]) => ({ name, value }))
 					.sort((a, b) => b.value - a.value);
-			console.log(entries);
 		}
+
+		loaded = true;
 	}
 </script>
 
@@ -61,12 +66,19 @@
 
 <div class="leaderboard">
 	<h2>{selectedCategory.replaceAll("_", " ").split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}: {selectedKey.replaceAll("_", " ").split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h2>
-	<ul>
-		{#each entries as { name, value }}
-			<li>
-				<span><a href={'/players/' + name}>{name}</a></span>
-				<span>{value}</span>
-			</li>
-		{/each}
-	</ul>
+	{#if showBoard}
+		<ul>
+			{#each entries as { name, value }}
+				<li>
+					<span><a href={'/players/' + name}>{name}</a></span>
+					<span>{value.toLocaleString()}</span>
+				</li>
+			{/each}
+		</ul>
+	{/if}
+	{#if loaded}
+		{#if showChart}
+			<PieChart selectedCategory={selectedCategory} selectedKey={selectedKey} entries={entries} />
+		{/if}
+	{/if}
 </div>

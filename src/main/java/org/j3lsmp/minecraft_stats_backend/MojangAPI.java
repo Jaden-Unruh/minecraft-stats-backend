@@ -18,6 +18,12 @@ public class MojangAPI {
 		});
 	}
 	
+	public static String getUUID(String name) {
+		if (uuidCache.containsKey(name))
+			return uuidCache.get(name);
+		return "";
+	}
+	
 	public static String getPlayerName(String uuid) {
 		
 		uuid = uuid.replaceAll("-", "");

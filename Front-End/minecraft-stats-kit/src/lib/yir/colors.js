@@ -84,7 +84,7 @@ export let animalColors = [
     { name: "player", color: "#ff00b6" }         // TODO: change to j3l gradient?
 ];
 
-const players = [
+export let players = [
     { name: "Select...", color: ":#333333" },
     { name: "J_dg", color: ":#ff00b6" },
     { name: "lunar_dusting", color: ":#078b0f" },
@@ -103,7 +103,10 @@ const players = [
     { name: "superkidbox", color: ":#9d4edd" },
     { name: "tienwun", color: ":#3a86ff" },
     { name: "JustChow", color: ":#06d6a0" },
-    { name: "Encorous", color: ":#fb5607" }
+    { name: "Encorous", color: ":#fb5607" },
+    { name: "Keiyari7", color: ":#99d8a3"},
+    { name: "MiniMe543", color: ":#2cff05"},
+    { name: "BlankDrawsStuff", color: ":#ffffff"}
 ];
 
 export function getAnimalColor(name) {

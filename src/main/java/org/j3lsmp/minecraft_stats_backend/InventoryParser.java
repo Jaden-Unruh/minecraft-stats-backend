@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import net.querz.nbt.io.NBTUtil;
 import net.querz.nbt.io.NamedTag;
 import net.querz.nbt.tag.CompoundTag;
 import net.querz.nbt.tag.IntTag;
 import net.querz.nbt.tag.ListTag;
+import net.querz.nbt.tag.NumberTag;
 import net.querz.nbt.tag.StringTag;
 import net.querz.nbt.tag.Tag;
 
@@ -112,11 +114,10 @@ public class InventoryParser {
 		CompoundTag enchantmentsTag = componentsTag.getCompoundTag("minecraft:enchantments");
 		if (enchantmentsTag != null) {
 			ArrayList<Map<String, Object>> enchantments = new ArrayList<>();
-			CompoundTag enchantmentLevels = enchantmentsTag.getCompoundTag("levels");
-			for (Map.Entry<String, Tag<?>> enchantmentTag : enchantmentLevels) {
+			for (Entry<String, Tag<?>> entry : enchantmentsTag.entrySet()) {
 				Map<String, Object> enchantment = new HashMap<>();
-				enchantment.put("name", enchantmentTag.getKey().replace("minecraft:", ""));
-				enchantment.put("level", ((IntTag) enchantmentTag.getValue()).asInt());
+				enchantment.put("name", entry.getKey().replace("minecraft:", ""));
+				enchantment.put("level", ((NumberTag<Integer>) entry.getValue()).asInt());
 				enchantments.add(enchantment);
 			}
 			itemComponents.put("Enchantments", enchantments);

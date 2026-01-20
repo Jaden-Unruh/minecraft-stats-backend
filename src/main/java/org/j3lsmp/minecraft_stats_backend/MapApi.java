@@ -87,10 +87,10 @@ public class MapApi {
 			}
 			
 			String html = Files.readString(filePath);
-			/*
+			
 			if (!paramValue.equals("true"))
 				html = html.replaceAll("src=\"custom.markers.js\"", "src=\"nocustom.markers.js\"");
-			*/
+			
 			return ResponseEntity.ok()
 					.header(HttpHeaders.CONTENT_TYPE, "text/html")
 					.body(html);

@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
     import CustomLeaderboard from '$lib/CustomLeaderboard.svelte';
+    import PieChart from '$lib/PieChart.svelte';
 
     let loading = true;
     let error = null;
@@ -89,7 +90,7 @@
                 {#each stats as item}
                     {#if item.value > 0}
                         <li>
-                            {item.key.split('z').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('').replaceAll('_', ' ')} {item.value} {itemName.toLowerCase()}
+                            {item.key.split('z').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('').replaceAll('_', ' ')} {item.value.toLocaleString()} {itemName.toLowerCase()}
                         </li>
                     {/if}
                 {/each}
@@ -105,7 +106,7 @@
     {:else}
         {#each stats as item}
             {#if item.value > 0}
-                <CustomLeaderboard selectedCategory={item.key} selectedKey={itemId} />
+                <CustomLeaderboard selectedCategory={item.key} selectedKey={itemId} showBoard={false} showChart={true}/>
             {/if}
         {/each}
     {/if}

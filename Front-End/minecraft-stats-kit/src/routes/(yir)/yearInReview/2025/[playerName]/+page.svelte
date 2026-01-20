@@ -11,6 +11,7 @@
     import MostDied from "$lib/yir/slides/MostDied.svelte";
     import KilledBoard from "$lib/yir/slides/KilledBoard.svelte";
     import DiedBoard from "$lib/yir/slides/DiedBoard.svelte";
+    import LedStat from "$lib/yir/slides/LedStat.svelte";
     import Summary from "$lib/yir/slides/Summary.svelte";
 
     import {
@@ -36,6 +37,7 @@
         "#330000",
         "#000099",
         "#000033",
+        "#ffaa00",
         "#1a0012"
     ];
     let index = 0;
@@ -45,6 +47,9 @@
 
     let mostKilledColor;
     let mostDiedColor;
+
+    let doLedStatFrame = false;
+    let ledStatInfo;
 
     const fetchInfo = async () => {
         document.documentElement.style.setProperty("--from", "#aa00aa");
@@ -70,6 +75,19 @@
             mostDiedColor = getAnimalColor(info.mostDied.name);
 
             getListStats();
+        }
+
+        try {
+            const response = await fetch(`/api/yir/2025/${playerName}/ledStat`);
+            if (!response.ok)
+                doLedStatFrame = false;
+                else {
+                ledStatInfo = await response.text();
+                doLedStatFrame = true;
+            }
+        } catch (err) {
+            console.warn(err);
+            doLedStatFrame = false;
         }
     };
 
@@ -114,7 +132,7 @@
             active = true;
             switched = false;
             const from = colors[index];
-            const to = colors[(index + 1) % colors.length];
+            const to = colors[((index === 7 && !doLedStatFrame) ? 9 : index + 1) % colors.length];
             document.documentElement.style.setProperty("--from", from);
             document.documentElement.style.setProperty("--to", to);
         }, DELAY);
@@ -124,7 +142,9 @@
         setTimeout(() => {
             active = false;
             index = (index + 1) % colors.length;
-            if (index === 8)
+            if (index === 8 && !doLedStatFrame)
+                index = 9;
+            if (index === 9)
                 fullCycle = true;
         }, DURATION);
         setTimeout(() => {
@@ -326,6 +346,8 @@
             {:else if index == 7}
                 <DiedBoard {textVisible} {mostDiedBoard} {visible}/>
             {:else if index == 8}
+                <LedStat {textVisible} {ledStatInfo} {visible} />
+            {:else if index == 9}
                 <Summary {playerName} {textVisible} {info} {visible} />
             {/if}
         </button>

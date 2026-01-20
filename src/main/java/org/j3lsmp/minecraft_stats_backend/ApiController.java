@@ -2,6 +2,7 @@ package org.j3lsmp.minecraft_stats_backend;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,10 +11,14 @@ import java.nio.file.StandardCopyOption;
 import java.text.ParseException;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -230,41 +235,83 @@ public class ApiController {
 	}
 
 	@GetMapping("/allItems")
-	public ResponseEntity<Set<String>> getAllItems() {
-		HashSet<String> allItems = new HashSet<>();
+	public ResponseEntity<List<String>> getAllItems() {
+		List<ItemEntry> allItems = new ArrayList<>();
 
 		for (PlayerStats playerStats : StatsParser.allPlayerStats.values()) {
 			Map<String, Integer> picked_up = playerStats.getStats().get("minecraft:picked_up");
 			if (picked_up != null)
-				allItems.addAll(picked_up.keySet());
+				for (Entry<String, Integer> entry : picked_up.entrySet())
+					ItemEntry.tryAdd(allItems, new ItemEntry(entry.getKey(), entry.getValue()));
 
 			Map<String, Integer> used = playerStats.getStats().get("minecraft:used");
 			if (used != null)
-				allItems.addAll(used.keySet());
+				for (Entry<String, Integer> entry : used.entrySet())
+					ItemEntry.tryAdd(allItems, new ItemEntry(entry.getKey(), entry.getValue()));
 
 			Map<String, Integer> dropped = playerStats.getStats().get("minecraft:dropped");
 			if (dropped != null)
-				allItems.addAll(dropped.keySet());
+				for (Entry<String, Integer> entry : dropped.entrySet())
+					ItemEntry.tryAdd(allItems, new ItemEntry(entry.getKey(), entry.getValue()));
 
 			Map<String, Integer> mined = playerStats.getStats().get("minecraft:mined");
 			if (mined != null)
-				allItems.addAll(mined.keySet());
+				for (Entry<String, Integer> entry : mined.entrySet())
+					ItemEntry.tryAdd(allItems, new ItemEntry(entry.getKey(), entry.getValue()));
 
 			Map<String, Integer> broken = playerStats.getStats().get("minecraft:broken");
 			if (broken != null)
-				allItems.addAll(broken.keySet());
+				for (Entry<String, Integer> entry : broken.entrySet())
+					ItemEntry.tryAdd(allItems, new ItemEntry(entry.getKey(), entry.getValue()));
 
 			Map<String, Integer> crafted = playerStats.getStats().get("minecraft:crafted");
 			if (crafted != null)
-				allItems.addAll(crafted.keySet());
+				for (Entry<String, Integer> entry : crafted.entrySet())
+					ItemEntry.tryAdd(allItems, new ItemEntry(entry.getKey(), entry.getValue()));
 		}
+		
+		Collections.sort(allItems);
+		
+		List<String> ret = new ArrayList<>();
+		
+		for(ItemEntry item : allItems)
+			ret.add(item.name);
 
 		try {
-			System.out.println(allItems.size());
-			return ResponseEntity.ok(allItems);
+			System.out.println(ret.size());
+			return ResponseEntity.ok(ret);
 		} catch (Exception e) {
 			return ResponseEntity.internalServerError().body(null);
 		}
+	}
+	
+	private class ItemEntry implements Comparable<ItemEntry> {
+		
+		String name;
+		int value;
+		
+		static HashSet<String> itemNames = new HashSet<>();
+		
+		static void tryAdd(List<ItemEntry> allItems, ItemEntry newEntry) {
+			for (ItemEntry entry : allItems)
+				if (entry.name.equals(newEntry.name)) {
+					entry.value += newEntry.value;
+					return;
+				}
+			
+			allItems.add(newEntry);
+		}
+		
+		ItemEntry(String name, int value) {
+			this.name = name;
+			this.value = value;
+		}
+
+		@Override
+		public int compareTo(ItemEntry o) {
+			return o.value - value;
+		}
+		
 	}
 
 	@GetMapping("/itemOverview/{itemId}")
@@ -482,7 +529,7 @@ public class ApiController {
 			return ResponseEntity.internalServerError().body(null);
 		}
 	}
-
+	
 	private Instant lastUpdate = Instant.MIN;
 
 	@Value("${minecraft.stats.source}")
@@ -505,7 +552,7 @@ public class ApiController {
 		else
 			response.put("lastUpdate", lastUpdate.toString());
 		return ResponseEntity.ok(response);
-	}
+	} 
 
 	@PostMapping("/updateStats")
 	public ResponseEntity<Map<String, String>> updateStats() {
@@ -546,6 +593,30 @@ public class ApiController {
 		} catch (Exception e) {
 			return ResponseEntity.internalServerError().body(Map.of("error", "Update failed: " + e.getMessage()));
 		}*/
+	}
+	
+	@GetMapping("/programVersion")
+	public ResponseEntity<String> getProgramVersion() {
+		try (InputStream input = getClass().getClassLoader().getResourceAsStream("application.properties")) {
+			Properties properties = new Properties();
+			properties.load(input);
+			return ResponseEntity.ok(properties.getProperty("app.version"));
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			return ResponseEntity.internalServerError().build();
+		}
+	}
+	
+	@GetMapping("/programName")
+	public ResponseEntity<String> getProgramName() {
+		try (InputStream input = getClass().getClassLoader().getResourceAsStream("application.properties")) {
+			Properties properties = new Properties();
+			properties.load(input);
+			return ResponseEntity.ok(properties.getProperty("app.name"));
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			return ResponseEntity.internalServerError().build();
+		}
 	}
 
 	private void runScreenCommand(String cmd) throws IOException {

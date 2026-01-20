@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>minecraft-stats-backend</artifactId>
-	<version>1.7.0-SERVER-1.21.8</version>
-	<name>minecraft-stats-backend</name>
+	<version>1.7.2-SERVER-1.21.11</version>
+	<name>J3L+ SMP Stats Explorer</name>
 	<description>Server-side for minecraft stats tool. Updated for Java version 1.21..</description>
 	<url>https://github.com/Jaden-Unruh/minecraft-stats-backend</url>
 	<licenses>
@@ -117,6 +117,12 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 	</build>
 
 </project>
